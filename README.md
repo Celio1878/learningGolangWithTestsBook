@@ -1,0 +1,1 @@
+# It's a Learning guide with the book LearnGolangWithTests
