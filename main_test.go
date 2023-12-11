@@ -28,6 +28,7 @@ func TestSystemRunning(t *testing.T) {
 	})
 }
 
+// Simplified Assert
 func assertCorrectMessage(t testing.TB, got, want string) {
 	t.Helper()
 	if got != want {
