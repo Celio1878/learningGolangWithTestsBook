@@ -26,6 +26,12 @@ func TestSystemRunning(t *testing.T) {
 
 		assertCorrectMessage(t, got, want)
 	})
+
+	t.Run("Main Function", func(t *testing.T) {
+		main()
+
+		fmt.Println("System is ok!")
+	})
 }
 
 // Simplified Assert
