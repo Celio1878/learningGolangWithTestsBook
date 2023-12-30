@@ -2,24 +2,29 @@ package geometry
 
 import "testing"
 
-func TestPerimeter(t *testing.T) {
-	var width, height float64 = 10.0, 10.0
-
-	got := Perimeter(width, height)
-	want := 40.0
-
-	if got != want {
-		t.Errorf("got %.2f want %.2f", got, want)
+func TestArea(t *testing.T) {
+	areaTests := []struct {
+		name    string
+		shape   Shape
+		hasArea float64
+	}{
+		{"Rectangle", Measures{12, 6}, 72.0},
+		{"Circle", Circle{10}, 314.1592653589793},
+		{"Triangle", Triangle{12, 6}, 36.0},
+	}
+	for _, test := range areaTests {
+		t.Run(test.name, func(t *testing.T) {
+			checkArea(t, test.shape, test.hasArea)
+		})
 	}
 }
 
-func TestRectangle(t *testing.T) {
-	var width, height float64 = 12.0, 6.0
+func checkArea(t testing.TB, shape Shape, want float64) {
+	t.Helper()
 
-	got := Rectangle(width, height)
-	want := 72.0
+	got := shape.Area()
 
 	if got != want {
-		t.Errorf("got %.2f want %.2f", got, want)
+		t.Errorf("%#v got %g want %g", shape, got, want)
 	}
 }
