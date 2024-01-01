@@ -7,6 +7,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"time"
 )
 
 func SystemRunningMessage(port int) string {
@@ -23,7 +24,7 @@ func main() {
 	message := SystemRunningMessage(8000)
 	fmt.Println(message)
 
-	sleeper := &countdown.DefaultSleeper{}
+	sleeper := &countdown.ConfigurableSleeper{Duration: 1 * time.Second, Slept: time.Sleep}
 	countdown.Countdown(os.Stdout, sleeper)
 
 	log.Fatal(http.ListenAndServe(":8000", http.HandlerFunc(greetings.GreeterHandler)))
