@@ -22,13 +22,13 @@ func slowStubWebsiteChecker(_ string) bool {
 
 func TestCheckWebsites(t *testing.T) {
 	websites := []string{
-		"http://google.com",
+		"https://google.com",
 		"https://beyourstories.com/",
 		"waat://furhurterwe.geds",
 	}
 
 	want := map[string]bool{
-		"http://google.com":          true,
+		"https://google.com":         true,
 		"https://beyourstories.com/": true,
 		"waat://furhurterwe.geds":    false,
 	}
