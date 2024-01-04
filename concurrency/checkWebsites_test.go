@@ -14,12 +14,6 @@ func mockWebsiteChecker(url string) bool {
 	return true
 }
 
-func slowStubWebsiteChecker(_ string) bool {
-	time.Sleep(20 * time.Millisecond)
-
-	return true
-}
-
 func TestCheckWebsites(t *testing.T) {
 	websites := []string{
 		"https://google.com",
@@ -38,6 +32,12 @@ func TestCheckWebsites(t *testing.T) {
 	if !reflect.DeepEqual(want, got) {
 		t.Fatalf("wanted %v, got %v", want, got)
 	}
+}
+
+func slowStubWebsiteChecker(_ string) bool {
+	time.Sleep(20 * time.Millisecond)
+
+	return true
 }
 
 func BenchmarkCheckWebsites(b *testing.B) {
